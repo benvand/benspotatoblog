@@ -29,6 +29,12 @@ TEMPLATE_DEBUG = True
 
 # Application definition
 
+TEMPLATE_LOADERS = (
+'django.template.loaders.filesystem.Loader',
+'django.template.loaders.app_directories.Loader',
+#django.template.loaders.eggs.Loader',
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +45,8 @@ INSTALLED_APPS = (
     'djangosecure',
     'csp',
     'djangae',
+    'blog',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,7 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'csp.middleware.CSPMiddleware',
+    # 'csp.middleware.CSPMiddleware',
     'djangosecure.middleware.SecurityMiddleware',
 )
 
@@ -80,3 +88,13 @@ STATIC_URL = '/static/'
 
 if DEBUG:
     CSP_STYLE_SRC = ("'self'", "'unsafe-inline'")
+
+BOOTSTRAP3 = {
+
+    # The Bootstrap base URL
+    'base_url': 'https://netdna.bootstrapcdn.com/bootstrap/3.2.0/',}
+
+
+TEMPLATE_DIRS = [
+    'templates',
+]

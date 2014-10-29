@@ -1,0 +1,11 @@
+{% extends "blog/blog_base.html" %}
+
+{% block title %}{{ block.super }} - {{ object.title|capfirst }}{% endblock title %}
+
+{% block content %}
+
+<h3>{{ object.title|capfirst }}</h3>
+<h5><a href={% url 'update_post' post.slug %}>Update this post</a> - <a href={% url 'delete_post' post.slug %}>Delete this post</a></h5>
+<p>{{ object.content }}</p>
+
+{% endblock content %}

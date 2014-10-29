@@ -1,0 +1,2 @@
+blog_post:
+  slug: [startswith, contains, icontains]

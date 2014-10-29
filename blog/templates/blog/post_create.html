@@ -1,0 +1,12 @@
+{% extends "blog/blog_base.html" %}
+{% block title %}{{ block.super }} - Create a post{% endblock title %}
+
+{% block content %}
+
+
+    <h4>Create a new blog post</h4>
+    {% include 'blog/includes/blog_form.html' %}
+
+{% endblock content %}
+
+

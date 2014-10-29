@@ -1,0 +1,9 @@
+{% extends "blog/blog_base.html" %}
+
+{% block title %}{{ block.super }} - Update a post{% endblock title %}
+{% block content %}
+
+
+    <h4>Update an existing blog post</h4>
+    {% include 'blog/includes/blog_form.html' %}
+{% endblock content %}

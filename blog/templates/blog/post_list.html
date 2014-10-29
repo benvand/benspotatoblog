@@ -1,0 +1,10 @@
+{% extends "blog/blog_base.html" %}
+{% block title %}{{ block.super }} - All{% endblock title %}
+{% block content %}
+    <h2>Welocme to Ben's Potato Blog</h2>
+{% for object in object_list %}
+    <h3><a href="{% url "detail_post" object.slug %}">{{ object.title }}</h3></a>
+{% endfor %}
+
+
+{% endblock content %}
