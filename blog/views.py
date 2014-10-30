@@ -66,8 +66,8 @@ class PostDetailView(PostModel, DetailView):
 
 class PostListView(PostModel, ListView):
     
-    def get_queryset(self, *args. **kwargs):
+    def get_queryset(self, *args, **kwargs):
         #model.Meta.ordering not affecting ordering on page. Work around here.
         return super(PostListView, self).get_queryset(
-            self, *args. **kwargs).order_by('-created')
+            self, *args, **kwargs).order_by('-created')
 
