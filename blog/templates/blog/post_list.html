@@ -1,10 +1,13 @@
 {% extends "blog/blog_base.html" %}
 {% block title %}{{ block.super }} - All{% endblock title %}
 {% block content %}
-    <h2>Welocme to Ben's Potato Blog</h2>
+    <h2>Welcome to Ben's Potato Blog</h2>
 {% for object in object_list %}
-    <h3><a href="{% url "detail_post" object.slug %}">{{ object.title }}</h3></a>
+    <h3><a href="{% url "detail_post" object.slug %}">{{ object.title }}</a></h3>
 {% endfor %}
 
 
+{% if not object_list  %}
+<h3>There are no blog posts so far!</h3>
+{% endif %}
 {% endblock content %}

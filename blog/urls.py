@@ -1,10 +1,9 @@
 __author__ = 'ben'
 from django.conf.urls import patterns, include, url
-from .views import (IndexView, PostCreateView, PostDeleteView, PostDetailView,
+from .views import (PostCreateView, PostDeleteView, PostDetailView,
                     PostListView, PostUpdateView)
 
 urlpatterns = patterns('',
-    # url(r'^index/$', IndexView.as_view(), name='index'),
     url(r'^create/$', PostCreateView.as_view(), name='create_post'),
     url(r'^update/(?P<slug>[\w\d_-]+)/$', PostUpdateView.as_view(),
         name='update_post'),

@@ -21,14 +21,6 @@ class PostModelForm(PostModel):
     form_class = BlogForm
 
 
-class IndexView(View, PostModel):
-
-    model = Post
-
-    def get(self, *args):
-        return HttpResponse('You found the index')
-
-
 class PostCreateView(PostModelForm, CreateView):
     template_name = 'blog/post_create.html'
     queryset = Post.objects.all()
@@ -59,11 +51,12 @@ class PostDeleteView(PostModel, DeleteView):
     def get_success_url(self):
         return reverse('list_posts')
 
-class PostDetailView(DetailView, PostModel):
+class PostDetailView(PostModel, DetailView):
 
     def get_object(self):
         return get_object_or_404(Post, slug=self.kwargs.get('slug', None))
 
 
 class PostListView(PostModel, ListView):
-    paginate_by = 10
+    def get_queryset(self):
+        return self.model.objects.all().order_by('-created')

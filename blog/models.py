@@ -2,8 +2,10 @@ __author__ = 'ben'
 from django.db import models
 from django.utils.text import slugify
 import re
-
+import datetime
 class Post(models.Model):
+    created = models.DateTimeField(auto_created=True, default=datetime.datetime.now())
+    edited = models.DateTimeField(auto_now=True, default=datetime.datetime.now())
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     content = models.TextField()
@@ -29,3 +31,6 @@ class Post(models.Model):
         if not self.id:
             self.slug = self.get_unique_slug()
         super(Post, self).save(*args, **kwargs)
+
+    class Meta():
+        ordering = ['-created']

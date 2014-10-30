@@ -13,4 +13,30 @@ indexes:
 - kind: blog_post
   properties:
   - name: _idx_startswith_slug
+  - name: created
+  - name: slug
+
+- kind: blog_post
+  properties:
+  - name: _idx_startswith_slug
+  - name: slug
+
+- kind: blog_post
+  properties:
+  - name: _idx_startswith_slug
+  - name: slug
+  - name: created
+
+- kind: blog_post
+  properties:
+  - name: _idx_startswith_slug
+  - name: slug
+  - name: created
+  - name: edited
+
+- kind: blog_post
+  properties:
+  - name: _idx_startswith_slug
+  - name: created
+    direction: desc
   - name: slug
