@@ -58,5 +58,6 @@ class PostDetailView(PostModel, DetailView):
 
 
 class PostListView(PostModel, ListView):
-    def get_queryset(self):
-        return self.model.objects.all().order_by('-created')
+    pass
+    # def get_queryset(self):
+    #     return self.model.objects.all().order_by('-created')
