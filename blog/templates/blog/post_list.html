@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Welcome to Ben's Potato Blog</h2>
 {% for object in object_list %}
-    <h3><a href="{% url "detail_post" object.slug %}">{{ object.title }}</a></h3>
+    <h3><a href="{% url "detail_post" object.slug %}">{{ object.title|capfirst }}</a></h3>
 {% endfor %}
 
 

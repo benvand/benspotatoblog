@@ -3,7 +3,10 @@ from django.db import models
 from django.utils.text import slugify
 import re
 import datetime
+
+
 class Post(models.Model):
+
     created = models.DateTimeField(auto_created=True, default=datetime.datetime.now())
     edited = models.DateTimeField(auto_now=True, default=datetime.datetime.now())
     title = models.CharField(max_length=255)

@@ -26,6 +26,7 @@ class PostCreateView(PostModelForm, CreateView):
     queryset = Post.objects.all()
 
     def form_valid(self, form):
+        form.instance.user = self.request.user
         form.instance.save()
         return super(PostCreateView, self).form_valid(form)
 
