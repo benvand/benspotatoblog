@@ -33,7 +33,7 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = self.get_unique_slug()
-        super(Post, self).save(*args, **kwargs)
+        return super(Post, self).save(*args, **kwargs)
 
     class Meta():
         ordering = ['-created']
