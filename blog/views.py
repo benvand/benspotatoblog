@@ -22,6 +22,7 @@ class PostModelForm(PostModel):
 
 
 class PostCreateView(PostModelForm, CreateView):
+    
     template_name = 'blog/post_create.html'
     queryset = Post.objects.all()
 
@@ -35,8 +36,10 @@ class PostCreateView(PostModelForm, CreateView):
 
 
 class PostUpdateView(PostModelForm, UpdateView):
+    
     template_name = 'blog/post_update.html'
     queryset = Post.objects.all()
+    
     def get_object(self, queryset=None):
         return get_object_or_404(Post, slug = self.kwargs['slug'])
 
@@ -44,13 +47,16 @@ class PostUpdateView(PostModelForm, UpdateView):
         return reverse('detail_post', kwargs={'slug': self.kwargs['slug']})
 
 class PostDeleteView(PostModel, DeleteView):
+    
     template_name = 'blog/post_delete.html'
     queryset = Post.objects.all()
+    
     def get_object(self, queryset=None):
         return get_object_or_404(Post, slug = self.kwargs['slug'])
 
     def get_success_url(self):
         return reverse('list_posts')
+
 
 class PostDetailView(PostModel, DetailView):
 
@@ -59,5 +65,9 @@ class PostDetailView(PostModel, DetailView):
 
 
 class PostListView(PostModel, ListView):
-    pass
+    
+    def get_queryset(self, *args. **kwargs):
+        #model.Meta.ordering not affecting ordering on page. Work around here.
+        return super(PostListView, self).get_queryset(
+            self, *args. **kwargs).order_by('-created')
 
