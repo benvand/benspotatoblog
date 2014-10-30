@@ -5,7 +5,7 @@ This is a lightweight lightweight blogging tool with create, edit and delete fun
 
 With appearances from:
 * [djangae](https://github.com/potatolondon/djangae) -  The best way to run Django on Google App Engine.
-* [djangae-scaffold](https://github.com/potatolondon/djangae-scaffold)(djangae-scaffold) 
+* [djangae-scaffold](https://github.com/potatolondon/djangae-scaffold)
 * [django-bootstrap3](https://github.com/dyve/django-bootstrap3)
 
-Currently live on [GAE](https://appengine.google.com) at [benspotatoblog.appengine.google.com](http://benspotatoblog.appengine.google.com)
+Currently live on [GAE](https://appengine.google.com) at [benspotatoblog.appspot.com](http://benspotatoblog.appspot.com)
