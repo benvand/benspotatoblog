@@ -6,6 +6,6 @@
 
 <h3>{{ object.title|capfirst }}</h3>
 <h5><a href={% url 'update_post' post.slug %}>Update this post</a> | <a href={% url 'delete_post' post.slug %}>Delete this post</a></h5>
-<p>{{ object.content }}</p>
+<p><pre>{{ object.content }}</pre></p>
 
 {% endblock content %}
