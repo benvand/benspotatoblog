@@ -39,6 +39,17 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
+          <p class="navbar-text">
+              {# Username, login logout #}
+              <span class="welcome">
+                  Welcome, {{ user.email }}
+                  {% if user.email %}
+                       | <a href="{% url 'logout' %}" class="navbar-link">Logout</a>
+                  {% else %}
+                      You're not yet logged in | <a href="{% url 'login' %}" class="navbar-link">Log in</a>
+                  {% endif %}
+              </span>
+
           <li><a href="/">All Posts</a></li>
         <li><a href="/create">New Post</a></li>
       </ul>

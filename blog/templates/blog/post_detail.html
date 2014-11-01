@@ -5,6 +5,7 @@
 {% block content %}
 
 <h3>{{ object.title|capfirst }}</h3>
+<h5>by {{ object.user.email }}, {{ object.created|date:'DATETIME_FORMAT' }}</h5><br>
 <h5><a href={% url 'update_post' post.slug %}>Update this post</a> | <a href={% url 'delete_post' post.slug %}>Delete this post</a></h5>
 <p><pre>{{ object.content }}</pre></p>
 

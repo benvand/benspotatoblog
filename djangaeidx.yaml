@@ -1,2 +1,3 @@
 blog_post:
   slug: [startswith, contains, icontains]
+  title: [icontains]

@@ -37,28 +37,39 @@ TEMPLATE_LOADERS = (
 
 INSTALLED_APPS = (
     'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.auth',
+    'djangae.contrib.gauth',
+    'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djangosecure',
     'csp',
     'djangae',
+    'auth',
     'blog',
     'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
+
+
     'djangae.contrib.security.middleware.AppEngineSecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'djangae.contrib.gauth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'csp.middleware.CSPMiddleware',
     'djangosecure.middleware.SecurityMiddleware',
+
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    "django.core.context_processors.request",
 )
 
 ROOT_URLCONF = 'scaffold.urls'
@@ -98,3 +109,13 @@ BOOTSTRAP3 = {
 TEMPLATE_DIRS = [
     'templates',
 ]
+
+from djangae.contrib.gauth.settings import *
+
+AUTH_USER_MODEL = 'djangae.GaeDatastoreUser'
+LOGIN_URL = 'login'
+#
+# DATETIME_FORMAT  = '%d/m/%Y %H:%M%a'
+# SHORT_DATE_FORMAT = '%d/m/%Y %H:%M%a'
+# DATE_FORMAT  = '%d/m/%Y %H:%M%a'
+# TIME_FORMAT  = '%d/m/%Y %H:%M%a'

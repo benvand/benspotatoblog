@@ -4,10 +4,11 @@
     <h2>Welcome to Ben's Potato Blog</h2>
 {% for object in object_list %}
     <h3><a href="{% url "detail_post" object.slug %}">{{ object.title|capfirst }}</a></h3>
+    <h5>by {{ object.user.email }}, {{ object.created|date:'DATETIME_FORMAT' }}</h5><br>
 {% endfor %}
 
 
 {% if not object_list  %}
-<h3>There are no blog posts so far!</h3>
+    <h3>There are no blog posts so far!</h3>
 {% endif %}
 {% endblock content %}

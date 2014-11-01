@@ -7,6 +7,9 @@ from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+
 
 from models import Post
 from forms import BlogForm
@@ -25,6 +28,11 @@ class PostCreateView(PostModelForm, CreateView):
     
     template_name = 'blog/post_create.html'
     queryset = Post.objects.all()
+
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(self.__class__, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -65,9 +73,17 @@ class PostDetailView(PostModel, DetailView):
 
 
 class PostListView(PostModel, ListView):
-    
+
+
     def get_queryset(self, *args, **kwargs):
+        # import pdb;pdb.set_trace()
         #model.Meta.ordering not affecting ordering on page. Work around here.
-        return super(PostListView, self).get_queryset(
-            self, *args, **kwargs).order_by('-created')
+        x = super(PostListView, self).get_queryset(
+            *args, **kwargs)
+
+        return x
+
+    def get_context_data(self, **kwargs):
+        s = super(self.__class__, self).get_context_data(**kwargs)
+        return s
 
