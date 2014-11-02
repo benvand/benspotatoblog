@@ -49,3 +49,6 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+#app_password
+notes.txt

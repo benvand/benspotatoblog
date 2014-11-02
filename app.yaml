@@ -26,3 +26,6 @@ skip_files:
     - requirements.txt
     - sitepackages/google_appengine*
     - (.*)\.pyc
+
+builtins:
+- remote_api: on

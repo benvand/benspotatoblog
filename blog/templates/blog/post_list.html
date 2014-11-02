@@ -7,8 +7,8 @@
     <h5>by {{ object.user.email }}, {{ object.created|date:'DATETIME_FORMAT' }}</h5><br>
 {% endfor %}
 
-
 {% if not object_list  %}
     <h3>There are no blog posts so far!</h3>
 {% endif %}
+
 {% endblock content %}

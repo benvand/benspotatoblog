@@ -10,6 +10,12 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: blog_comment
+  properties:
+  - name: post_id
+  - name: created
+    direction: desc
+
 - kind: blog_post
   properties:
   - name: __key__
@@ -57,3 +63,18 @@ indexes:
   - name: slug
   - name: created
   - name: edited
+
+- kind: djangae_gaedatastoreuser
+  properties:
+  - name: date_joined
+  - name: email
+  - name: first_name
+  - name: groups
+  - name: is_active
+  - name: is_staff
+  - name: is_superuser
+  - name: last_login
+  - name: last_name
+  - name: password
+  - name: user_permissions
+  - name: username

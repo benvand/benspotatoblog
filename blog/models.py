@@ -3,7 +3,6 @@ from django.db import models
 from django.utils.text import slugify
 from djangae.contrib.gauth.models import GaeDatastoreUser
 import re
-import datetime
 
 
 class Post(models.Model):
@@ -38,3 +37,13 @@ class Post(models.Model):
     class Meta:
         ordering = ['-created']
 
+
+class Comment(models.Model):
+    user = models.ForeignKey(GaeDatastoreUser)
+    post = models.ForeignKey(Post)
+    created = models.DateTimeField(auto_now_add=True,)
+    edited = models.DateTimeField(auto_now=True,)
+    content = models.TextField()
+
+    class Meta:
+        ordering = ['-created']

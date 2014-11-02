@@ -1,0 +1,34 @@
+{% extends "blog/blog_base.html" %}
+
+{% block title %}{{ block.super }} - {{ post.title|capfirst }}{% endblock title %}
+
+{% block content %}
+
+<h3>{{ post.title|capfirst }}</h3>
+<h5>by {{ post.user.email }}, {{ post.created|date:'DATETIME_FORMAT' }}</h5><br>
+
+{% if is_owner and post.user.email == user.email %}<h5><a href={% url 'update_post' post.slug %}>Update this post</a> | <a href={% url 'delete_post' post.slug %}>Delete this post</a></h5>{% endif %}
+
+<p><pre>{{ post.content }}</pre></p>
+
+<div class="clearfix"></div>
+
+
+<h5>Comment</h5>
+
+    {% if user.is_authenticated %}
+        {% include 'blog/includes/base_form.html' %}
+    {% else %}
+        <p>To comment you must first be <a href="{% url 'login' %}">logged in</a></p>
+    {% endif %}
+    <br>
+
+
+    {% for comment in post.comment_set.all %}
+        <h5>{{ comment.user.email }}, {{ comment.created|date:'DATETIME_FORMAT' }}</h5>
+        <p><pre>{{ post.content }}</pre></p>
+        <br>
+    {% endfor %}
+
+
+{% endblock content %}

@@ -70,6 +70,7 @@ MIDDLEWARE_CLASSES = (
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     "django.core.context_processors.request",
+    "blog.context_processors.is_owner",
 )
 
 ROOT_URLCONF = 'scaffold.urls'
@@ -119,3 +120,5 @@ LOGIN_URL = 'login'
 # SHORT_DATE_FORMAT = '%d/m/%Y %H:%M%a'
 # DATE_FORMAT  = '%d/m/%Y %H:%M%a'
 # TIME_FORMAT  = '%d/m/%Y %H:%M%a'
+
+OWNER_EMAIL = 'benjamin.f.vandersteen@gmail.com'
