@@ -1,5 +1,6 @@
 {% load bootstrap3 %}
 {% load static %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -12,7 +13,9 @@
 
 <head>
 {% block head %}
-
+{#    <link rel="shortcut icon" type="image/png" href="{% static "favicon.ico" %} />#}
+<link rel="shortcut icon" type="image/png"
+          href="{% static '/favicon.ico' %}"/>
     <title>{% block title %}Ben's Potato Blog{% endblock title %}</title>
 
 {% endblock head %}
@@ -59,3 +62,5 @@
 
 {% endblock body %}
 </body>
+
+
