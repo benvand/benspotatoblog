@@ -26,7 +26,7 @@
 
     {% for comment in post.comment_set.all %}
         <h5>{{ comment.user.email }}, {{ comment.created|date:'DATETIME_FORMAT' }}</h5>
-        <p><pre>{{ post.content }}</pre></p>
+        <p><pre>{{ comment.content }}</pre></p>
         <br>
     {% endfor %}
 
