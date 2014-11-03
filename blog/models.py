@@ -1,6 +1,9 @@
 __author__ = 'ben'
+from datetime import datetime
+
 from django.db import models
 from django.utils.text import slugify
+from django.utils.functional import cached_property
 from djangae.contrib.gauth.models import GaeDatastoreUser
 import re
 
@@ -12,6 +15,11 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     content = models.TextField()
+    allow_comments = models.BooleanField(default=True)
+
+    @cached_property
+    def age(self):
+        return datetime.now() - self.created
 
     def get_unique_slug(self):
         """get all slugs starting with slugified title.

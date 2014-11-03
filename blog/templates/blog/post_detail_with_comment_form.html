@@ -1,4 +1,5 @@
 {% extends "blog/blog_base.html" %}
+{% load markdown_deux_tags %}
 
 {% block title %}{{ block.super }} - {{ post.title|capfirst }}{% endblock title %}
 
@@ -9,8 +10,10 @@
 
 {% if is_owner and post.user.email == user.email %}<h5><a href={% url 'update_post' post.slug %}>Update this post</a> | <a href={% url 'delete_post' post.slug %}>Delete this post</a></h5>{% endif %}
 
-<p><pre>{{ post.content }}</pre></p>
+<p><pre>{{ post.content|markdown }}</pre></p>
 
+
+{% if post.allow_comments %}
 <div class="clearfix"></div>
 
 
@@ -26,9 +29,9 @@
 
     {% for comment in post.comment_set.all %}
         <h5>{{ comment.user.email }}, {{ comment.created|date:'DATETIME_FORMAT' }}</h5>
-        <p><pre>{{ post.content }}</pre></p>
+        <p><pre>{{ comment.content }}</pre></p>
         <br>
     {% endfor %}
 
-
+{% endif %}
 {% endblock content %}

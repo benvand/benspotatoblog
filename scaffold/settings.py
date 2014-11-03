@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'auth',
     'blog',
     'bootstrap3',
+    'markdown_deux',
 )
 
 MIDDLEWARE_CLASSES = (

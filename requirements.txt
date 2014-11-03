@@ -4,3 +4,4 @@ django-secure
 django-csp
 nose
 django-bootstrap3
+django-markdown-deux
